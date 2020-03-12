@@ -51,7 +51,7 @@ fi
 if [ -n "${MAVEN_SETTINGS}" ]
 then
    echo "Generating Maven settings.xml file"
-   echo "$MAVEN_SETTINGS" | base64 --decode > settings.xml
+   echo "$MAVEN_SETTINGS" | base64 -d > settings.xml
 fi
 
 ls -al
