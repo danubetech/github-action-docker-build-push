@@ -52,6 +52,9 @@ if [ -n "${MAVEN_SETTINGS}" ]
 then
    echo "Generating Maven settings.xml file"
    echo "$MAVEN_SETTINGS" | base64 -d > settings.xml
+   # this directory is needed for the universal resolver
+   mkdir -p ./resolver/java/
+   echo "$MAVEN_SETTINGS" | base64 -d > ./resolver/java/settings.xml
 fi
 
 ls -al
