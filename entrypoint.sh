@@ -56,8 +56,15 @@ fi
 
 ls -al
 
+echo "Building container ..."
 docker build . -f ${DOCKER_FILE} -t ${CONTAINER_TAG}
 
-docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
+if [ -n "${DOCKER_USERNAME}" ]
+then
+   echo "Pushing container to DockerHub ..."
 
-docker push ${CONTAINER_TAG}
+   docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
+
+   docker push ${CONTAINER_TAG}
+fi
+
